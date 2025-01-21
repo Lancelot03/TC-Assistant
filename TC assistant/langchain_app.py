@@ -3,8 +3,8 @@ from langchain.chains import ConversationChain
 from hugchat import hugchat
 from hugchat.login import Login
 
-st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
-st.title('🤗💬 HugChat App')
+st.set_page_config(page_title="TC Assistant")
+st.title('TC Assistant')
 
 # Hugging Face Credentials
 with st.sidebar:
@@ -14,7 +14,7 @@ with st.sidebar:
 
 # Store AI generated responses
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "I'm HugChat, How may I help you?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "I'm TC Bot, How may I help you?"}]
 
 # Display existing chat messages
 for message in st.session_state.messages:
