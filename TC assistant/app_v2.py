@@ -5,11 +5,11 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
 
-st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
+st.set_page_config(page_title="TC Assistant")
 
 # Sidebar contents
 with st.sidebar:
-    st.title('🤗💬 HugChat App')
+    st.title('TC Assistant')
     
     st.header('Hugging Face Login')
     hf_email = st.text_input('Enter E-mail:', type='password')
@@ -24,12 +24,12 @@ with st.sidebar:
 
     ''')
     add_vertical_space(5)
-    st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
+    st.write('Welcome')
 
 # Generate empty lists for generated and past.
 ## generated stores AI generated responses
 if 'generated' not in st.session_state:
-    st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
+    st.session_state['generated'] = ["I'm TC Bot, How may I help you?"]
 ## past stores User's questions
 if 'past' not in st.session_state:
     st.session_state['past'] = ['Hi!']
