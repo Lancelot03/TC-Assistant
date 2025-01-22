@@ -1,13 +1,13 @@
 import streamlit as st
 from hugchat import hugchat
+from hugchat.login import Login
 
 # App title
 st.set_page_config(page_title="TC Assistant")
 
-# Directly instantiate the ChatBot without login
-# Replace 'your_email@example.com' and 'your_password' with actual credentials if needed
-hf_email = "your_email@example.com"
-hf_pass = "your_password"
+# Hardcoded Hugging Face Credentials
+hf_email = "your_email@example.com"  # Replace with your email
+hf_pass = "your_password"              # Replace with your password
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
@@ -20,8 +20,11 @@ for message in st.session_state.messages:
 
 # Function for generating LLM response
 def generate_response(prompt_input):
-    # Create ChatBot without login
-    chatbot = hugchat.ChatBot()  # Adjust this line if necessary
+    # Hugging Face Login
+    sign = Login(hf_email, hf_pass)
+    cookies = sign.login()
+    # Create ChatBot                        
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     return chatbot.chat(prompt_input)
 
 # User-provided prompt
