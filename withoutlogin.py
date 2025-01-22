@@ -6,8 +6,8 @@ from hugchat.login import Login
 st.set_page_config(page_title="TC Assistant")
 
 # Hardcoded Hugging Face Credentials
-hf_email = "your_email@example.com"  # Replace with your email
-hf_pass = "your_password"              # Replace with your password
+hf_email = "94158952h@gmail.com"  # Replace with your email
+hf_pass = "Harsh123@"              # Replace with your password
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
