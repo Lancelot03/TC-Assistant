@@ -5,9 +5,11 @@ from hugchat.login import Login
 # App title
 st.set_page_config(page_title="TC Assistant")
 
-# Hardcoded Hugging Face Credentials
-hf_email = "94158952h@gmail.com"  # Replace with your email
-hf_pass = "Harsh123@"              # Replace with your password
+# Sidebar for Hugging Face Credentials
+with st.sidebar:
+    st.title('TC Assistant')
+    hf_email = st.text_input('Enter E-mail:', type='text')
+    hf_pass = st.text_input('Enter password:', type='password')
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
@@ -19,16 +21,16 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 # Function for generating LLM response
-def generate_response(prompt_input):
+def generate_response(prompt_input, email, passwd):
     # Hugging Face Login
-    sign = Login(hf_email, hf_pass)
+    sign = Login(email, passwd)
     cookies = sign.login()
     # Create ChatBot                        
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     return chatbot.chat(prompt_input)
 
 # User-provided prompt
-if prompt := st.chat_input():
+if prompt := st.chat_input(disabled=not (hf_email and hf_pass)):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.write(prompt)
@@ -37,7 +39,7 @@ if prompt := st.chat_input():
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = generate_response(prompt) 
+            response = generate_response(prompt, hf_email, hf_pass) 
             st.write(response) 
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
