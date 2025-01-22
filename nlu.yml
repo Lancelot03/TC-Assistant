@@ -1,0 +1,22 @@
+version: "3.0"
+nlu:
+  - intent: greet
+    examples: |
+      - hi
+      - hello
+      - hey
+      - good morning
+  - intent: goodbye
+    examples: |
+      - bye
+      - see you later
+      - goodbye
+  - intent: ask_question
+    examples: |
+      - What is the return policy?
+      - How do I track my order?
+      - What payment methods do you accept?
+    entities:
+      - return_policy
+      - order_tracking
+      - payment_methods
