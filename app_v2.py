@@ -5,11 +5,11 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
 
-st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
+st.set_page_config(page_title="TC Assistant")
 
 # Sidebar contents
 with st.sidebar:
-    st.title('🤗💬 HugChat App')
+    st.title('TC Assistant')
     
     st.header('Hugging Face Login')
     hf_email = st.text_input('Enter E-mail:', type='password')
@@ -19,12 +19,10 @@ with st.sidebar:
     ## About
     This app is an LLM-powered chatbot built using:
     - [Streamlit](https://streamlit.io/)
-    - [HugChat](https://github.com/Soulter/hugging-chat-api)
     - [OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
-
     ''')
     add_vertical_space(5)
-    st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
+    st.write('Made by Lacnelot03')
 
 # Generate empty lists for generated and past.
 ## generated stores AI generated responses
