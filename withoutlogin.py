@@ -8,7 +8,7 @@ st.set_page_config(page_title="TC Assistant")
 # Sidebar for Hugging Face Credentials
 with st.sidebar:
     st.title('TC Assistant')
-    hf_email = st.text_input('Enter E-mail:', type='text')
+    hf_email = st.text_input('Enter E-mail:', type='default')
     hf_pass = st.text_input('Enter password:', type='password')
 
 # Store LLM generated responses
